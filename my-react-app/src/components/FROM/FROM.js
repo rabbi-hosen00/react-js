@@ -1,30 +1,29 @@
+
 import React, { useState } from 'react'
 import  style from './form.module.css'
 
 export default function FROM() {
 
-    const[name,setName] = useState("");
-    const[email,setEmail] = useState("");
-    const[password,setPassword] = useState("");
+   
+    const [user,setUser] = useState({name:'', email: '', password: ''})
 
-    const handleNameChange = (e) =>{
-        setName(e.target.value)
-    }
-    const handleEmailChange = (e) =>{
-       setEmail(e.target.value)
-    }
-    const handlPasswordeChange = (e) =>{
-        setPassword(e.target.value)
-    }
+     const {name,email,password} = user;
+
+
+     const handleChange = (e) =>{
+        const fileName = e.target.name;
+        if (fileName === "name"){
+            setUser({ name:e.target.value,email,password});
+        } else if (fileName === 'email') {
+            setUser({ name,email:e.target.value,password});
+        } else if ( fileName === 'password') {
+            setUser({ name,email,password:e.target.value});
+        }
+    };
 
     const handleSubmit = (e) => {
        console.log("from is summitted")
-       let userInfo = {
-        name,
-        email,
-        password,
-       };
-       console.log(userInfo)
+       console.log(user)
        e.preventDefault();
     }
 
@@ -39,7 +38,7 @@ export default function FROM() {
                 name="name" 
                 id="name"
                 value={name}
-                onChange={handleNameChange}
+                onChange={handleChange}
                 required/>
             </div>
 
@@ -50,7 +49,7 @@ export default function FROM() {
                 name="email"
                 id="email"
                 value={email}
-                onChange={handleEmailChange} 
+                onChange={handleChange} 
                 required/>
             </div>
 
@@ -61,7 +60,7 @@ export default function FROM() {
                name="password" 
                id="password" 
                value={password}
-               onChange={handlPasswordeChange}  
+               onChange={handleChange}  
                required/>
             </div>
 
