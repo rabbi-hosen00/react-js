@@ -1,11 +1,20 @@
 import React from 'react'
-import FROM from './components/FROM/FROM'
+
+import Child from './components/STATE_LIFTING/Child'
 
 
-export default function App() {
+
+export default function app() {
+  const data = "i am from parent(app)"
+  
+
+    const handleChildData = (childData) =>{
+        console.log(childData)
+    }
+
   return (
     <div>
-      <FROM />
+      <Child  data={data} onChildData={handleChildData}/>
     </div>
   )
 }
