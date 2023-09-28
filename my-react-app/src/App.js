@@ -1,21 +1,23 @@
 import React from 'react'
 
-import Child from './components/STATE_LIFTING/Child'
+import './index.css'
+import Todo from './todo'
+import NewTodo from './NewTodo'
+
+const App = () => {
+
+ const handleNewTodo = (newTodo) => {
+    console.log(newTodo)
+ }
 
 
-
-export default function app() {
-  const data = "i am from parent(app)"
-  
-
-    const handleChildData = (childData) =>{
-        console.log(childData)
-    }
 
   return (
     <div>
-      <Child  data={data} onChildData={handleChildData}/>
+      <NewTodo onHandleNewTodo={handleNewTodo}/>
+      <Todo title="learn react.js" />
     </div>
   )
 }
 
+export default App
